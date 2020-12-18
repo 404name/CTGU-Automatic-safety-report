@@ -1,4 +1,4 @@
-name: 网易云签到
+name: 自动报平安
 
 on:
   push:
@@ -22,9 +22,8 @@ jobs:
         uses: actions/setup-python@v2
         with:
           python-version: 3.7
-      - name: 签到
+      - name: 报平安ing
         run: |
-          /opt/hostedtoolcache/Python/3.7.9/x64/bin/python -m pip install --upgrade pip
           pip install BeautifulSoup4
           pip install requests
           echo 开始报平安
