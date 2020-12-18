@@ -8,6 +8,7 @@ from requests import Session
 # 0开头的要用字符串
 username = '2019112404'
 password = '285017'
+
 logUrl = "http://yiqing.ctgu.edu.cn/wx/index/loginSubmit.do"
 
 header = {
