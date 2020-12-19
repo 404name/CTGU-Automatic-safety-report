@@ -24,7 +24,6 @@ jobs:
           python-version: 3.7
       - name: 报平安ing
         run: |
-          pip install BeautifulSoup4
-          pip install requests
+          pip install -r requirements.txt
           echo 开始报平安
           python3 自动报平安.py
