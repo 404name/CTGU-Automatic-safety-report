@@ -1,5 +1,4 @@
 import requests
-import json
 from bs4 import BeautifulSoup
 # 自己的账号密码
 # 0开头的要用字符串
@@ -65,7 +64,7 @@ postData = {
 }
 
 getFormurl = "http://yiqing.ctgu.edu.cn/wx/health/toApply.do"
-responseRes = yiqingSession.get(getFormurl)
+responseRes = yiqingSession.get(getFormurl, timeout=None)
 
 # 获取必要信息填入表单
 soup = BeautifulSoup(responseRes.text, "html.parser")
@@ -80,6 +79,6 @@ postFormurl = "http://yiqing.ctgu.edu.cn/wx/health/saveApply.do"
 
 header['Referer'] = "http://yiqing.ctgu.edu.cn/wx/health/toApply.do"
 
-responseRes = yiqingSession.post(postFormurl, data=postData, headers=header)
+responseRes = yiqingSession.post(postFormurl, data=postData, headers=header, timeout=None)
 
 sentMsg(responseRes.text)
