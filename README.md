@@ -13,7 +13,7 @@
 
 - 添加多个人格式如下
 
-```json
+```
 [['2019112404', '666666', '49bdbxxxxxxxxxxxxxxx2'], 
  ['2019112405', '666666', '49bdbxxxxxxxxxxxxxxx2'], 
  ['2019112406', '666666', '49bdbxxxxxxxxxxxxxxx2'],
