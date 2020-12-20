@@ -38,3 +38,7 @@
 4. 1. 默认启动:  8/20点明天默认启动两次防止没报上
    2. 追加启动：手动在action界面点收藏(已经点过了就取消再次点击)
    3. 更新代码： 会每次update后也会启动一次
+   
+参考： https://github.com/szh1213/auto_yiqing_ctgu
+参考： https://github.com/Baymax-Zhu/yiqing.ctgu
+改进为能直接使用
