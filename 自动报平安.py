@@ -6,22 +6,15 @@ from bs4 import BeautifulSoup
 # 自己的账号密码
 # key为推送消息的
 users = eval(os.environ['users'])
+#[['2019112404', '285017', '49bdb9375842537a41ebc635a09229b2']]
 # '49bdb9375842537a41ebc635a09229b2'
 logUrl = "http://yiqing.ctgu.edu.cn/wx/index/loginSubmit.do"
-[['2019112404', '285017', '49bdb9375842537a41ebc635a09229b2']]
 
 
 def sentMsg(msg, key):
-    if key == null
     headers = {'Content-Type': 'application/json;charset=utf-8'}
     api_url = "https://qmsg.zendee.cn/send/"+key+"?msg=" + msg
     return requests.post(api_url, headers=headers).content
-
-
-for username, pas, key in users:
-    # start_new_thread(report,(usr,pas,))
-    sentOne(username, password, key)
-    # print(log[-1][-1])
 
 
 def sentOne(username, password, key):
@@ -95,3 +88,9 @@ def sentOne(username, password, key):
 
     print(responseRes.text)
     sentMsg(responseRes.text, key)
+
+
+for username, password, key in users:
+    # start_new_thread(report,(usr,pas,))
+    sentOne(username, password, key)
+    # print(log[-1][-1])
