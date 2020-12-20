@@ -1,6 +1,6 @@
 import requests
 from bs4 import BeautifulSoup
-
+import os
 # ****************登录*******************
 
 # 自己的账号密码
