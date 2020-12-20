@@ -1,17 +1,13 @@
 import requests
 from bs4 import BeautifulSoup
+from requests import Session
+
+# ****************登录*******************
+
 # 自己的账号密码
 # 0开头的要用字符串
 username = '2019112404'
 password = '285017'
-
-
-def sentMsg(msg):
-    headers = {'Content-Type': 'application/json;charset=utf-8'}
-    api_url = "https://qmsg.zendee.cn/send/49bdb9375842537a41ebc635a09229b2?msg= %s" % msg
-    return requests.post(api_url, headers=headers).content
-
-
 logUrl = "http://yiqing.ctgu.edu.cn/wx/index/loginSubmit.do"
 
 header = {
@@ -81,4 +77,4 @@ header['Referer'] = "http://yiqing.ctgu.edu.cn/wx/health/toApply.do"
 
 responseRes = yiqingSession.post(postFormurl, data=postData, headers=header, timeout=None)
 
-sentMsg(responseRes.text)
+print(responseRes.text)
