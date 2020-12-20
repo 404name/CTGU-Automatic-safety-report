@@ -23,6 +23,8 @@ jobs:
         with:
           python-version: 3.7
       - name: 报平安ing
+        env:
+          users: ${{ secrets.users }}
         run: |
           pip install -r requirements.txt
           echo 开始报平安
