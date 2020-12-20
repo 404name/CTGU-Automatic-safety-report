@@ -6,8 +6,6 @@ import os
 # 自己的账号密码
 # key为推送消息的
 users = eval(os.environ['users'])
-#[['2019112404', '285017', '49bdb9375842537a41ebc635a09229b2']]
-# '49bdb9375842537a41ebc635a09229b2'
 logUrl = "http://yiqing.ctgu.edu.cn/wx/index/loginSubmit.do"
 
 
@@ -33,7 +31,8 @@ def sentOne(username, password, key):
         "password": password
     }
 
-    responseRes = yiqingSession.post(logUrl, data=postData, headers=header, timeout=None)
+    responseRes = yiqingSession.post(
+        logUrl, data=postData, headers=header, timeout=None)
 
     # *******从提交页面获取 表单信息**********
 
