@@ -5,7 +5,7 @@ from bs4 import BeautifulSoup
 
 # 自己的账号密码
 # key为推送消息的
-users: ${{secrets.users}}
+users = eval(os.environ['users'])
 # '49bdb9375842537a41ebc635a09229b2'
 logUrl = "http://yiqing.ctgu.edu.cn/wx/index/loginSubmit.do"
 [['2019112404', '285017', '49bdb9375842537a41ebc635a09229b2']]
