@@ -14,7 +14,7 @@ logUrl = "http://yiqing.ctgu.edu.cn/wx/index/loginSubmit.do"
 def sentMsg(msg, key):
     headers = {'Content-Type': 'application/json;charset=utf-8'}
     api_url = "https://qmsg.zendee.cn/send/"+key+"?msg=" + msg
-    return requests.post(api_url, headers=headers).content
+    return requests.post(api_url, headers=headers, timeout=None).content
 
 
 def sentOne(username, password, key):
@@ -33,7 +33,7 @@ def sentOne(username, password, key):
         "password": password
     }
 
-    responseRes = yiqingSession.post(logUrl, data=postData, headers=header)
+    responseRes = yiqingSession.post(logUrl, data=postData, headers=header, timeout=None)
 
     # *******从提交页面获取 表单信息**********
 
