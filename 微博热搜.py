@@ -1,6 +1,6 @@
 # https://s.weibo.com/top/summary/
 import requests
-from bs4 import BeautifulSoup
+from BeautifulSoup4 import BeautifulSoup
 
 
 def wb():
