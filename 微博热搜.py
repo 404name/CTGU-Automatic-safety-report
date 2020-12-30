@@ -1,6 +1,6 @@
 # https://s.weibo.com/top/summary/
 import requests
-from BeautifulSoup4 import BeautifulSoup
+from bs4 import BeautifulSoup
 
 
 def wb():
@@ -8,7 +8,7 @@ def wb():
     # 新建数组存放热搜榜
     hot_url = 'https://s.weibo.com/top/summary/'
     # 热搜榜链接
-    r = requests.get(hot_url)
+    r = requests.get(hot_url, timeout=None)
     # 向链接发送get请求获得页面
     soup = BeautifulSoup(r.text, 'lxml')
     # 解析页面
@@ -38,7 +38,7 @@ def wb():
 def sentMsg(msg):
     headers = {'Content-Type': 'application/json;charset=utf-8'}
     api_url = "https://qmsg.zendee.cn/send/49bdb9375842537a41ebc635a09229b2?msg= %s" % msg
-    return requests.post(api_url, headers=headers).content
+    return requests.post(api_url, headers=headers, timeout=None).content
 
 
 sentMsg(wb())
