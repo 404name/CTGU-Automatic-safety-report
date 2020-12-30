@@ -1,6 +1,7 @@
 # https://s.weibo.com/top/summary/
 import requests
 from bs4 import BeautifulSoup
+import lxml
 
 
 def wb():
