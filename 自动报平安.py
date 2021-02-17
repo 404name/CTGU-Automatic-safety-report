@@ -34,7 +34,7 @@ def sentOne(username, password, key):
     sentMsg(username, key)
     responseRes = yiqingSession.post(
         logUrl, data=postData,headers =header,timeout=5)
-    sentMsg(responseRes.text, key)
+    sentMsg('请求1', key)
     # *******从提交页面获取 表单信息**********
 
     # 构建表单（默认身体健康)
@@ -68,8 +68,8 @@ def sentOne(username, password, key):
     }
 
     getFormurl = "http://yiqing.ctgu.edu.cn/wx/health/toApply.do"
-    responseRes = yiqingSession.get(getFormurl, timeout=None,headers =header, verify=False)
-
+    responseRes = yiqingSession.get(getFormurl, timeout=5,headers =header, verify=False)
+    sentMsg('请求2', key)
     # 获取必要信息填入表单
     soup = BeautifulSoup(responseRes.text, "html.parser")
     getFormlist = soup.find_all('input')[0:15]
@@ -88,7 +88,7 @@ def sentOne(username, password, key):
 
     responseRes = yiqingSession.post(
         postFormurl, data=postData,headers =header, verify=False, timeout=None)
-
+    sentMsg('成功发送', key)
     print(responseRes.text)
     sentMsg(responseRes.text, key)
 
