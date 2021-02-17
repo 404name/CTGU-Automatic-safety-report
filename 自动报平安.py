@@ -92,7 +92,7 @@ def sentOne(username, password, key,proxy):
 
     responseRes = yiqingSession.post(
         postFormurl, data=postData,headers =header, verify=False, timeout=None, proxies=proxies)
-    sentMsg('成功发送', key)
+    sentMsg('发送成功', key)
     print(responseRes.text)
     sentMsg(responseRes.text, key)
 
