@@ -33,11 +33,9 @@ def sentOne(username, password, key,proxy):
         "username": username,
         "password": password
     }
-    sentMsg(username, key)
     try:
         responseRes = yiqingSession.post(
             logUrl, data=postData,headers =header,timeout=None, proxies=proxies)
-        sentMsg('登陆成功', key)
     except:
         sentMsg('网页无响应/请更换代理', key)
     # *******从提交页面获取 表单信息**********
@@ -82,7 +80,7 @@ def sentOne(username, password, key,proxy):
         try:
             postData[Formdata.attrs['name']] = Formdata.attrs['value']
         except:
-            print("没name")
+            print("没name字段")
 
     # *************提交最终表单***********
 
@@ -92,9 +90,8 @@ def sentOne(username, password, key,proxy):
 
     responseRes = yiqingSession.post(
         postFormurl, data=postData,headers =header, verify=False, timeout=None, proxies=proxies)
-    sentMsg('发送成功', key)
     print(responseRes.text)
-    sentMsg(responseRes.text, key)
+    sentMsg('用户' + username + ':'+ responseRes.text, key)
 
 
 for username, password, key, proxy in users:
