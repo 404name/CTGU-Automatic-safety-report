@@ -19,7 +19,7 @@ def sentOne(username, password, key):
     header = {
         # origin:http://yiqing.ctgu.edu.cn
         # "Content-Type": "application/json;charset=UTF-8",
-        'Referer': "http://yiqing.ctgu.edu.cn/wx/index/login.do?currSchool=ctgu&CURRENT_YEAR=2019",
+        'Referer': "http://yiqing.ctgu.edu.cn/wx/index/login.do?currSchool=ctgu&CURRENT_YEAR=2021",
         # 模仿谷歌浏览器的登录
         'User-Agent': "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/80.0.3987.122 Safari/537.36"
     }
