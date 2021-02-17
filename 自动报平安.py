@@ -25,7 +25,7 @@ def sentOne(username, password, key):
     }
 
     yiqingSession = requests.session()
-
+    yiqingSession.keep_alive = False
     postData = {
         "username": username,
         "password": password
