@@ -31,10 +31,10 @@ def sentOne(username, password, key):
         "username": username,
         "password": password
     }
-
+    sentMsg(username, key)
     responseRes = yiqingSession.post(
-        logUrl, data=postData,headers =header, verify=False, timeout=None)
-
+        logUrl, data=postData,headers =header)
+    sentMsg(responseRes.text, key)
     # *******从提交页面获取 表单信息**********
 
     # 构建表单（默认身体健康)
