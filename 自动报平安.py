@@ -23,7 +23,10 @@ def sentOne(username, password, key):
         # 模仿谷歌浏览器的登录
         'User-Agent': "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/88.0.4324.150 Safari/537.36"
     }
-
+    proxies = {
+    'http': 'http://116.117.134.134:81',
+    'https': 'https://116.117.134.134:81'
+    }
     yiqingSession = requests.session()
     yiqingSession.keep_alive = False
     postData = {
@@ -33,22 +36,10 @@ def sentOne(username, password, key):
     sentMsg(username, key)
     try:
         responseRes = yiqingSession.post(
-            logUrl, data=postData,headers =header,timeout=None)
+            logUrl, data=postData,headers =header,timeout=None, proxies=proxies)
         sentMsg('登陆成功', key)
     except:
-        try:
-            responseRes = yiqingSession.post(
-                logUrl, data=postData,headers =header,timeout=None)
-            sentMsg('登陆成功', key)
-        except:
-            try:
-                responseRes = yiqingSession.post(
-                    logUrl, data=postData,headers =header,timeout=None)
-                sentMsg('登陆成功', key)
-            except:
-                sentMsg('网页无响应', key)
-                responseRes = yiqingSession.post(
-                    logUrl, data=postData,headers =header,timeout=None)
+        sentMsg('网页无响应', key)
     # *******从提交页面获取 表单信息**********
 
     # 构建表单（默认身体健康)
@@ -82,7 +73,7 @@ def sentOne(username, password, key):
     }
 
     getFormurl = "http://yiqing.ctgu.edu.cn/wx/health/toApply.do"
-    responseRes = yiqingSession.get(getFormurl, timeout=5,headers =header, verify=False)
+    responseRes = yiqingSession.get(getFormurl, timeout=5,headers =header, verify=False, proxies=proxies)
     sentMsg('请求2', key)
     # 获取必要信息填入表单
     soup = BeautifulSoup(responseRes.text, "html.parser")
@@ -101,7 +92,7 @@ def sentOne(username, password, key):
     header['Referer'] = "http://yiqing.ctgu.edu.cn/wx/health/toApply.do"
 
     responseRes = yiqingSession.post(
-        postFormurl, data=postData,headers =header, verify=False, timeout=None)
+        postFormurl, data=postData,headers =header, verify=False, timeout=None, proxies=proxies)
     sentMsg('成功发送', key)
     print(responseRes.text)
     sentMsg(responseRes.text, key)
