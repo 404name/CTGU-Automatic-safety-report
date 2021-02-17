@@ -33,11 +33,22 @@ def sentOne(username, password, key):
     sentMsg(username, key)
     try:
         responseRes = yiqingSession.post(
-            logUrl, data=postData,headers =header,timeout=12)
+            logUrl, data=postData,headers =header,timeout=None)
+        sentMsg('登陆成功', key)
     except:
-        sentMsg('网页无响应', key)
-        responseRes = yiqingSession.post(
-            logUrl, data=postData,headers =header,timeout=5)
+        try:
+            responseRes = yiqingSession.post(
+                logUrl, data=postData,headers =header,timeout=None)
+            sentMsg('登陆成功', key)
+        except:
+            try:
+                responseRes = yiqingSession.post(
+                    logUrl, data=postData,headers =header,timeout=None)
+                sentMsg('登陆成功', key)
+            except:
+                sentMsg('网页无响应', key)
+                responseRes = yiqingSession.post(
+                    logUrl, data=postData,headers =header,timeout=None)
     # *******从提交页面获取 表单信息**********
 
     # 构建表单（默认身体健康)
