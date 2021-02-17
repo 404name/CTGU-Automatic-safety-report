@@ -74,7 +74,10 @@ def sentOne(username, password, key):
     getFormlist = soup.find_all('input')[0:15]
 
     for Formdata in getFormlist:
-        postData[Formdata.attrs['name']] = Formdata.attrs['value']
+        try:
+            postData[Formdata.attrs['name']] = Formdata.attrs['value']
+        except:
+            print("没name")
 
     # *************提交最终表单***********
 
