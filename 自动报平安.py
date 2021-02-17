@@ -19,10 +19,9 @@ def sentOne(username, password, key):
     header = {
         # origin:http://yiqing.ctgu.edu.cn
         # "Content-Type": "application/json;charset=UTF-8",
-        'Referer': "http://yiqing.ctgu.edu.cn/wx/index/login.do?currSchool=ctgu&CURRENT_YEAR=2021",
-        "Connection": "close",
+        'Referer': "http://yiqing.ctgu.edu.cn/wx/index/login.do?currSchool=ctgu&CURRENT_YEAR=2019&showWjdc=false&studentShowWjdc=false",
         # 模仿谷歌浏览器的登录
-        'User-Agent': "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/80.0.3987.122 Safari/537.36"
+        'User-Agent': "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/88.0.4324.150 Safari/537.36"
     }
 
     yiqingSession = requests.session()
@@ -32,9 +31,13 @@ def sentOne(username, password, key):
         "password": password
     }
     sentMsg(username, key)
-    responseRes = yiqingSession.post(
-        logUrl, data=postData,headers =header,timeout=5)
-    sentMsg('请求1', key)
+    try:
+        responseRes = yiqingSession.post(
+            logUrl, data=postData,headers =header,timeout=12)
+    except:
+        sentMsg('网页无响应', key)
+        responseRes = yiqingSession.post(
+            logUrl, data=postData,headers =header,timeout=5)
     # *******从提交页面获取 表单信息**********
 
     # 构建表单（默认身体健康)
