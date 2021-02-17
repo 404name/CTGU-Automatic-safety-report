@@ -20,6 +20,7 @@ def sentOne(username, password, key):
         # origin:http://yiqing.ctgu.edu.cn
         # "Content-Type": "application/json;charset=UTF-8",
         'Referer': "http://yiqing.ctgu.edu.cn/wx/index/login.do?currSchool=ctgu&CURRENT_YEAR=2021",
+        "Connection": "close",
         # 模仿谷歌浏览器的登录
         'User-Agent': "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/80.0.3987.122 Safari/537.36"
     }
@@ -32,7 +33,7 @@ def sentOne(username, password, key):
     }
 
     responseRes = yiqingSession.post(
-        logUrl, data=postData, headers=header, timeout=None)
+        logUrl, data=postData,headers =header, verify=False, timeout=None)
 
     # *******从提交页面获取 表单信息**********
 
@@ -67,7 +68,7 @@ def sentOne(username, password, key):
     }
 
     getFormurl = "http://yiqing.ctgu.edu.cn/wx/health/toApply.do"
-    responseRes = yiqingSession.get(getFormurl, timeout=None)
+    responseRes = yiqingSession.get(getFormurl, timeout=None,headers =header, verify=False)
 
     # 获取必要信息填入表单
     soup = BeautifulSoup(responseRes.text, "html.parser")
@@ -86,7 +87,7 @@ def sentOne(username, password, key):
     header['Referer'] = "http://yiqing.ctgu.edu.cn/wx/health/toApply.do"
 
     responseRes = yiqingSession.post(
-        postFormurl, data=postData, headers=header, timeout=None)
+        postFormurl, data=postData,headers =header, verify=False, timeout=None)
 
     print(responseRes.text)
     sentMsg(responseRes.text, key)
