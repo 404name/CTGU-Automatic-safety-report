@@ -15,7 +15,7 @@ def sentMsg(msg, key):
     return requests.post(api_url, headers=headers, timeout=None).content
 
 
-def sentOne(username, password, key):
+def sentOne(username, password, key,proxy):
     header = {
         # origin:http://yiqing.ctgu.edu.cn
         # "Content-Type": "application/json;charset=UTF-8",
@@ -24,8 +24,8 @@ def sentOne(username, password, key):
         'User-Agent': "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/88.0.4324.150 Safari/537.36"
     }
     proxies = {
-    'http': 'http://116.117.134.134:81',
-    'https': 'https://116.117.134.134:81'
+    'http': proxy,
+    'https': proxy
     }
     yiqingSession = requests.session()
     yiqingSession.keep_alive = False
@@ -39,7 +39,7 @@ def sentOne(username, password, key):
             logUrl, data=postData,headers =header,timeout=None, proxies=proxies)
         sentMsg('登陆成功', key)
     except:
-        sentMsg('网页无响应', key)
+        sentMsg('网页无响应/请更换代理', key)
     # *******从提交页面获取 表单信息**********
 
     # 构建表单（默认身体健康)
@@ -74,7 +74,6 @@ def sentOne(username, password, key):
 
     getFormurl = "http://yiqing.ctgu.edu.cn/wx/health/toApply.do"
     responseRes = yiqingSession.get(getFormurl, timeout=5,headers =header, verify=False, proxies=proxies)
-    sentMsg('请求2', key)
     # 获取必要信息填入表单
     soup = BeautifulSoup(responseRes.text, "html.parser")
     getFormlist = soup.find_all('input')[0:15]
@@ -98,7 +97,7 @@ def sentOne(username, password, key):
     sentMsg(responseRes.text, key)
 
 
-for username, password, key in users:
+for username, password, key, proxy in users:
     # start_new_thread(report,(usr,pas,))
-    sentOne(username, password, key)
+    sentOne(username, password, key,proxy)
     # print(log[-1][-1])
