@@ -37,7 +37,7 @@ def sentOne(username, password, key,proxy):
         responseRes = yiqingSession.post(
             logUrl, data=postData,headers =header,timeout=None, proxies=proxies)
     except:
-        sentMsg('网页无响应/请更换代理', key)
+        sentMsg('网页无响应/请更换代理3.13updata(http://61.135.169.121:80)', key)
     # *******从提交页面获取 表单信息**********
 
     # 构建表单（默认身体健康)
