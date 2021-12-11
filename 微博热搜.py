@@ -38,8 +38,9 @@ def wb():
 
 def sentMsg(msg):
     headers = {'Content-Type': 'application/json;charset=utf-8'}
+    # api_url = "https://qmsg.zendee.cn/group/49bdb9375842537a41ebc635a09229b2?msg= %s" % msg
     api_url = "https://qmsg.zendee.cn/send/49bdb9375842537a41ebc635a09229b2?msg= %s" % msg
     return requests.post(api_url, headers=headers, timeout=None).content
 
 
-sentMsg(wb())
+sentMsg("推送测试  --3/4（忽略）")
